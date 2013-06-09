@@ -1,21 +1,21 @@
 server {
 
+  root   /vagrant_data;	
+  index index.php;
+
   location / {
-	index index.php;
-    root   /vagrant_data;	
+      try_files $uri $uri/ /index.php$is_args$args;
   }
 
   location ~ \.php$ {
-        root   /vagrant_data;
         fastcgi_pass   127.0.0.1:9000;
         fastcgi_index  index.php;
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
         include        fastcgi_params;
     }
 
-	//rewrite or modern framework
-    if (!-e $request_filename) {
-        rewrite ^/(.+)$ /index.php?url=$1 last;
-        break;
+    location ~* ^.+\.(jpg|js|jpeg|png|ico|gif|txt|js|css|swf|zip|rar|avi|exe|mpg|mp3|wav|mpeg|asf|wmv)$ {
+        try_files $uri /index.php$is_args$args;
     }
+
 }
