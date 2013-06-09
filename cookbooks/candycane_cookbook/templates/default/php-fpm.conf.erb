@@ -1,5 +1,10 @@
 server {
 
+  location / {
+	index index.php;
+    root   /vagrant_data;	
+  }
+
   location ~ \.php$ {
         root   /vagrant_data;
         fastcgi_pass   127.0.0.1:9000;
@@ -8,4 +13,9 @@ server {
         include        fastcgi_params;
     }
 
+	//rewrite or modern framework
+    if (!-e $request_filename) {
+        rewrite ^/(.+)$ /index.php?url=$1 last;
+        break;
+    }
 }

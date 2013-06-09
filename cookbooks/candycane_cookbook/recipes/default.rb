@@ -21,5 +21,5 @@ service "php-fpm" do
 end
 
 service "nginx" do
-  action :start
+  action [:start,:restart]
 end
