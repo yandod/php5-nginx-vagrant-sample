@@ -8,6 +8,7 @@ package "php5-fpm"
 package "mysql-server"
 
 template "/etc/nginx/conf.d/php-fpm.conf" do
+  mode 0644
   source "php-fpm.conf.erb"
 end
 
