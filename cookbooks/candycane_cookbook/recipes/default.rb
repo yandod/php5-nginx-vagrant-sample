@@ -6,6 +6,13 @@ package "php5"
 package "php5-mysql"
 package "php5-cli"
 package "php5-fpm"
+package "php-pear"
+
+execute "phpunit-install" do
+  command "pear config-set auto_discover 1; pear install pear.phpunit.de/PHPUnit"
+  not_if { ::File.exists?("/usr/bin/phpunit")}
+end
+
 package "mysql-server"
 
 template "/etc/nginx/conf.d/php-fpm.conf" do
