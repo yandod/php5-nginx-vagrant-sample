@@ -1,19 +1,17 @@
 execute "apt-get" do
   command "apt-get update"
 end
-package "nginx"
-package "php5"
-package "php5-mysql"
-package "php5-cli"
-package "php5-fpm"
-package "php-pear"
+
+%{nginx php5 php5-mysql php5-cli php5-fpm php-pear mysql-server}.each do |pkg|
+  package pkg do
+    action [:install, :upgrade]
+  end
+end
 
 execute "phpunit-install" do
   command "pear config-set auto_discover 1; pear install pear.phpunit.de/PHPUnit"
   not_if { ::File.exists?("/usr/bin/phpunit")}
 end
-
-package "mysql-server"
 
 template "/etc/nginx/conf.d/php-fpm.conf" do
   mode 0644
