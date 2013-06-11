@@ -3,6 +3,26 @@ php5-nginx-vagrant-sample
 
 Vagrantを使ってPHPとMySQLが動作する環境を自動で設定します。OSなどに依存しないXAMPP/MAMPのようなものと考えてください。
 
+<table>
+<tr>
+<th>OS</th>
+<td>Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic x86_64)</td>
+</tr>
+<tr>
+<th>PHP</th>
+<td>PHP 5.3.10-1ubuntu3.6 with Suhosin-Patch</td>
+</tr>
+<tr>
+<th>Nginx</th>
+<td>1.1.19</td>
+</tr>
+<tr>
+<th>MySQL</th>
+<td>5.5.31-0ubuntu0.12.04.2 (Ubuntu)</td>
+</tr>
+</table>
+
+
 PHPカンファレンス関西2013の講演で使ったコードなど
 
 スライドはこちらです。
@@ -37,4 +57,22 @@ vagrant up
 
 ### 動作確認
 http://192.168.33.10 にアクセスする。IPアドレスを変更する場合はVagrantfileを編集します。
+またサーバ内にSSHしたい場合はvagrantコマンドを使います。
+
+<pre>
+vagrant ssh
+</pre>
+
+### 終了
+vagrantコマンドで仮想マシンを終了、又は破棄出来ます。
+
+一旦止めるだけの場合。
+<pre>
+vagrant halt
+</pre>
+
+データを破棄する場合。次回、<code>vagrant up</code>の際にはまっさらなマシンが作成される。
+<pre>
+vagrant destroy
+</pre>
 
