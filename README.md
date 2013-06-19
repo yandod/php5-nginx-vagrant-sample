@@ -1,6 +1,8 @@
 php5-nginx-vagrant-sample
 =========================
 
+[English Readme](https://github.com/yandod/php5-nginx-vagrant-sample/blob/master/README_en.md)
+
 Vagrantを使ってPHPとMySQLが動作する環境を自動で設定します。OSなどに依存しないXAMPP/MAMPのようなものと考えてください。
 
 <table>
