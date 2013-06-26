@@ -39,7 +39,7 @@ VirtualBoxをセットアップしてください。
 
 ### Vagrantをダウンロードしてインストール
 最新版をインストールしてください。
-[http://downloads.vagrantup.com/]()http://downloads.vagrantup.com/)
+[http://downloads.vagrantup.com/](http://downloads.vagrantup.com/)
 
 ### このリポジトリをクローン
 gitでクローンするか、ZIPなどでダウンロードしてください。
