@@ -18,7 +18,6 @@ execute "composer-install" do
   not_if { ::File.exists?("/usr/local/bin/composer")}
 end
 
-log node[:doc_root]
 template "/etc/nginx/conf.d/php-fpm.conf" do
   mode 0644
   source "php-fpm.conf.erb"
