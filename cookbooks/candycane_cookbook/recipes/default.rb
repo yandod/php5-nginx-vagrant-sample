@@ -2,7 +2,7 @@ execute "apt-get" do
   command "apt-get update"
 end
 
-%w{git subversion nginx php5 php5-mysql php5-curl php5-cli php5-fpm php-pear mysql-server}.each do |pkg|
+%w{curl git subversion nginx php5 php5-mysql php5-curl php5-cli php5-fpm php-pear mysql-server}.each do |pkg|
   package pkg do
     action [:install, :upgrade]
   end
