@@ -56,7 +56,7 @@ vagrant up
 </pre>
 
 ### test
-open http://192.168.33.10 edit Vagrantfile to change the ip.
+open http://127.0.0.1:8080 edit Vagrantfile to change the ip.
 use <code>vagrant ssh</code> to ssh into your VM.
 
 <pre>
