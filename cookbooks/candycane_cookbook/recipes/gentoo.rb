@@ -1,8 +1,15 @@
-execute "apt-get" do
-  command "apt-get update"
+# to use this recipe, please specify cnadycane_cookbook::gentoo
+
+
+execute "emerge --sync" do
+  command "emerge --sync"
+  only_if {node['platform'] == 'gentoo'}
 end
 
-packages = %w{git subversion nginx php5 php5-mysql php5-curl php5-cli php5-fpm php-pear mysql-server curl imagemagick php5-imagick}
+packages = %w{git subversion nginx dev-lang/php PEAR-PEAR dev-db/mysql-init-script}
+execute "manual-mysql" do
+  command "emerge dev-db/mysql"
+end
 
 packages.each do |pkg|
   package pkg do
@@ -20,6 +27,9 @@ execute "composer-install" do
   not_if { ::File.exists?("/usr/local/bin/composer")}
 end
 
+directory "/etc/nginx/conf.d/" do
+  action :create
+end
 template "/etc/nginx/conf.d/php-fpm.conf" do
   mode 0644
   source "php-fpm.conf.erb"
