@@ -25,6 +25,10 @@ template "/etc/nginx/conf.d/php-fpm.conf" do
   source "php-fpm.conf.erb"
 end
 
+service 'apache2' do
+  action :stop
+end
+
 %w{mysql php5-fpm nginx}.each do |service_name|
     service service_name do
       action [:start, :restart]
