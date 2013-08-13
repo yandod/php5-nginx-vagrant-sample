@@ -2,7 +2,7 @@ execute "apt-get" do
   command "apt-get update"
 end
 
-packages = %w{git subversion nginx php5 php5-mysql php5-curl php5-cli php5-fpm php-pear mysql-server curl imagemagick php5-imagick}
+packages = %w{git subversion nginx php5 php5-mysql  php5-pgsql php5-curl php5-cli php5-fpm php-pear mysql-server postgresql curl imagemagick php5-imagick}
 
 packages.each do |pkg|
   package pkg do
@@ -29,7 +29,7 @@ service 'apache2' do
   action :stop
 end
 
-%w{mysql php5-fpm nginx}.each do |service_name|
+%w{mysql postgresql php5-fpm nginx}.each do |service_name|
     service service_name do
       action [:start, :restart]
     end
