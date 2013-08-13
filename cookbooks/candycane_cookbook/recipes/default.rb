@@ -7,6 +7,7 @@ packages = %w{git subversion nginx php5 php5-mysql  php5-pgsql php5-curl php5-cl
 packages.each do |pkg|
   package pkg do
     action [:install, :upgrade]
+    version node.default[:versions][pkg]
   end
 end
 
