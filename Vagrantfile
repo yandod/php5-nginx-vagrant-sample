@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "./cookbooks"
-    chef.add_recipe "candycane_cookbook"
+    chef.add_recipe "omusubi"
     chef.json = { doc_root: doc_root}
   end
 end
