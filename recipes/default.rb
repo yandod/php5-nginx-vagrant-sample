@@ -26,6 +26,11 @@ template "/etc/nginx/conf.d/php-fpm.conf" do
   source "php-fpm.conf.erb"
 end
 
+template "/etc/php5/fpm/pool.d/www2.conf" do
+  mode 0644
+  source "www2.conf.erb"
+end
+
 service 'apache2' do
   action :stop
 end
