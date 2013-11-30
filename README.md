@@ -4,6 +4,7 @@ php5-nginx-vagrant-sample
 [English Readme](https://github.com/yandod/php5-nginx-vagrant-sample/blob/master/README_en.md)
 
 Vagrantを使ってPHPとMySQLが動作する環境を自動で設定します。OSなどに依存しないXAMPP/MAMPのようなものと考えてください。
+またPostgreSQLやImageMagickもセットアップしてあります。
 
 <table>
 <tr>
@@ -12,7 +13,7 @@ Vagrantを使ってPHPとMySQLが動作する環境を自動で設定します�
 </tr>
 <tr>
 <th>PHP</th>
-<td>PHP 5.3.10-1ubuntu3.6 with Suhosin-Patch</td>
+<td>PHP 5.5.6-1+debphp.org~precise+2</td>
 </tr>
 <tr>
 <th>Nginx</th>
@@ -21,6 +22,18 @@ Vagrantを使ってPHPとMySQLが動作する環境を自動で設定します�
 <tr>
 <th>MySQL</th>
 <td>5.5.31-0ubuntu0.12.04.2 (Ubuntu)</td>
+</tr>
+<tr>
+<th>PostgreSQL</th>
+<td>9.1.9</td>
+</tr>
+<tr>
+<th>curl</th>
+<td>7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8y zlib/1.2.5</td>
+</tr>
+<tr>
+<th>ImageMagick</th>
+<td>8:6.6.9.7</td>
 </tr>
 </table>
 
@@ -40,6 +53,11 @@ VirtualBoxをセットアップしてください。
 ### Vagrantをダウンロードしてインストール
 最新版をインストールしてください。
 [http://downloads.vagrantup.com/](http://downloads.vagrantup.com/)
+
+### Vagrant Berkshelfプラグインをインストール
+コマンドでインストールします。
+
+    $ vagrant plugin install vagrant-berkshelf
 
 ### このリポジトリをクローン
 gitでクローンするか、ZIPなどでダウンロードしてください。
