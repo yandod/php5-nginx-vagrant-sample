@@ -37,6 +37,30 @@ Vagrantを使ってPHPとMySQLが動作する環境を自動で設定します�
 </tr>
 </table>
 
+## update
+
+クックブックの管理をBerkshelfで行うように変更し、PHP5.5を導入するように変更しました。利用の際はvagrant-berkshelfプラグインのインストールをお願いします。
+また、パッケージの取得にかかる時間が少し長くなりましたので、元に戻したい方はPHPのバージョンを指定している部分をコメントアウトしてください。
+
+<pre>
+  config.vm.provision :chef_solo do |chef|
+    chef.add_recipe "apt"
+    chef.add_recipe "php5_ppa::from_ondrej"
+    chef.add_recipe "omusubi"
+    versions = {};
+    # if you would use php5.3 family with fast boot,  comment out lines bellow.
+    versions['php5'] = '5.5.*'
+    versions['php5-mysql'] = '5.5.*'
+    versions['php5-pgsql'] = '5.5.*'
+    versions['php5-curl'] = '5.5.*'
+    versions['php5-mcrypt'] = '5.5.*'
+    versions['php5-cli'] = '5.5.*'
+    versions['php5-fpm'] = '5.5.*'
+    versions['php-pear'] = '5.5.*'
+    versions['php5-imagick'] = '3.*'
+    chef.json = {doc_root: doc_root, 'versions' => versions}
+  end
+</pre>
 
 PHPカンファレンス関西2013の講演で使ったコードなど
 
