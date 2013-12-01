@@ -20,6 +20,7 @@ Vagrant.configure("2") do |config|
     chef.add_recipe "php5_ppa::from_ondrej"
     chef.add_recipe "omusubi"
     versions = {};
+    # if you would use php5.3 family with fast boot,  comment out lines bellow.
     versions['php5'] = '5.5.*'
     versions['php5-mysql'] = '5.5.*'
     versions['php5-pgsql'] = '5.5.*'
@@ -34,7 +35,7 @@ Vagrant.configure("2") do |config|
  
   config.vm.provision :shell, :inline => <<-EOS
     mysql -u root --execute  "create database if not exists #{app_name}"
-    cd /vagrant_data; composer update
+    #cd /vagrant_data; composer update
     #cd /vagrant_data/app; yes | ./Console/cake schema update
   EOS
  
