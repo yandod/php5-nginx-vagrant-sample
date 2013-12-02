@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   config.berkshelf.enabled = true
   File.open('Berksfile', 'w').write <<-EOS
     cookbook 'apt'
-    cookbook 'php5_ppa'
+    cookbook 'php5_ppa', git: "https://github.com/yandod/php5_ppa.git", branch: "ondrej"
     cookbook 'omusubi', git: "https://github.com/yandod/omusubi.git"
   EOS
   config.vm.provision :chef_solo do |chef|
