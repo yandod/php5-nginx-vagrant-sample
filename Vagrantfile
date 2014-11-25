@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
- 
+
 Vagrant.configure("2") do |config|
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder src_dir, "/vagrant_data", :create => true, :owner=> 'vagrant', :group=>'www-data', :mount_options => ['dmode=775,fmode=775']
   config.berkshelf.enabled = true
   File.open('Berksfile', 'w').write <<-EOS
+  source 'https://api.berkshelf.com'
     cookbook 'apt'
     cookbook 'php5_ppa', git: "https://github.com/yandod/php5_ppa.git", branch: "ondrej"
     cookbook 'omusubi', git: "https://github.com/yandod/omusubi.git"
@@ -30,13 +31,15 @@ Vagrant.configure("2") do |config|
     versions['php5-fpm'] = '5.5.*'
     versions['php-pear'] = '5.5.*'
     versions['php5-imagick'] = '3.*'
+    versions['php5-intl'] = '5.5.*'
+    versions['php5-sqlite'] = '5.5.*'
     chef.json = {doc_root: doc_root, 'versions' => versions}
   end
- 
+
   config.vm.provision :shell, :inline => <<-EOS
     mysql -u root --execute  "create database if not exists #{app_name}"
     #cd /vagrant_data; composer update
     #cd /vagrant_data/app; yes | ./Console/cake schema update
   EOS
- 
+
 end
